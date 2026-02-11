@@ -13,13 +13,14 @@ function validateUrl(url) {
   );
 }
 
-export default function SongInput() {
+export default function SongInput({ addTextToChat }) {
   const [url, setUrl] = React.useState("");
   const [error, setError] = React.useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateUrl(url)) {
       // Submit song parent component function missing
+      addTextToChat(url, "user");
       setUrl("");
       setError("");
     } else {

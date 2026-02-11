@@ -19,7 +19,7 @@ const PROMPT = [
 
 let availablePrompt = [...PROMPT];
 
-export default function PromptDisplay() {
+export default function PromptDisplay({ addTextToChat }) {
   const [currentPrompt, setCurrentPrompt] = React.useState(PROMPT[0]);
   const handleNextPrompt = () => {
     if (availablePrompt.length === 0) {
@@ -28,6 +28,7 @@ export default function PromptDisplay() {
 
     const randomIndex = Math.floor(Math.random() * availablePrompt.length);
     const selectedPrompt = availablePrompt.splice(randomIndex, 1)[0];
+    addTextToChat(selectedPrompt, "computer");
 
     setCurrentPrompt(selectedPrompt);
   };
